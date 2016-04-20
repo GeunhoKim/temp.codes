@@ -8,7 +8,16 @@
  *
  */
 function removeUrlParams(url){
-    var pattern = new RegExp(/(\?|\&)([^=]+)\=(.([^\&]+)|([0-9]))/g)
+    /*
+     * regex 설명
+     * / /g : 매칭 되는 모든 문자열 찾기
+     *
+     * (\?|\&)  : ? 혹은 & 로 시작
+     * ([^=]+)  : = 를 제외한 연속된 모든 문자열
+     * \=       : = 하나에 매칭
+     * ([^\&]+) : & 를 제외한 연속된 모든 문자열
+     */
+    var pattern = new RegExp(/(\?|\&)([^=]+)\=([^\&]+)/g)
     var returnUrl = url;
 
 	match = pattern.exec(url);
