@@ -8,27 +8,24 @@
  *
  */
 function removeUrlParams(url){
-    /*
-     * regex 설명
-     * / /g : 매칭 되는 모든 문자열 찾기
-     *
-     * (\?|\&)  : ? 혹은 & 로 시작
-     * ([^=]+)  : = 를 제외한 연속된 모든 문자열
-     * \=       : = 하나에 매칭
-     * ([^\&]+) : & 를 제외한 연속된 모든 문자열
-     */
+        
+    // (\?|\&)  : ? 혹은 & 로 시작
+    // ([^=]+)  : = 를 제외한 연속된 모든 문자열
+    // \=       : = 하나에 매칭
+    // ([^\&]+) : & 를 제외한 연속된 모든 문자열
+    // / /g     : 매칭 되는 모든 문자열 찾기
     var pattern = new RegExp(/(\?|\&)([^=]+)\=([^\&]+)/g)
     var returnUrl = url;
 
-	match = pattern.exec(url);
-	while (match != null) {
-    	query = match[0]
-    	console.log('query='+ query)
-    	key = query.split('=')[0]
-    	returnUrl = returnUrl.replace(query, key)
-    	
-	    match = pattern.exec(url);
-	}
+    match = pattern.exec(url);
+    while (match != null) {
+        query = match[0]
+        console.log('query='+ query)
+        key = query.split('=')[0]
+        returnUrl = returnUrl.replace(query, key)
+        
+        match = pattern.exec(url);
+    }
 
-	return returnUrl
+    return returnUrl
 }
